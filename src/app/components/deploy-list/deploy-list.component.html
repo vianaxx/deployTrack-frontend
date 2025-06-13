@@ -1,0 +1,48 @@
+<div class="deploy-list-container">
+  <div class="deploy-list-header">
+    <h2>Gerenciamento de Deploys</h2>
+    <button routerLink="/deploys/new" class="btn-primary">+ Novo Deploy</button>
+  </div>
+
+  <app-deploy-filter (filterChanged)="applyFilter($event)"></app-deploy-filter>
+
+  <div *ngIf="loading" class="info-message">Carregando...</div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <div class="table-wrapper" *ngIf="filteredDeploys.length > 0">
+    <table class="deploy-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Aplicação</th>
+        <th>Versão</th>
+        <th>Ambiente</th>
+        <th>Autor</th>
+        <th>Status</th>
+        <th>Data/Hora</th>
+        <th>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let deploy of filteredDeploys">
+        <td>{{ deploy.id }}</td>
+        <td>{{ deploy.application }}</td>
+        <td>{{ deploy.version }}</td>
+        <td>{{ deploy.environment }}</td>
+        <td>{{ deploy.author }}</td>
+        <td>
+          <span class="badge" [ngClass]="deploy.status.toLowerCase()">{{ deploy.status }}</span>
+        </td>
+        <td>{{ deploy.timestamp | date:'short' }}</td>
+        <td class="actions">
+          <button [routerLink]="['/deploys', deploy.id]" title="Visualizar">👁</button>
+          <button [routerLink]="['/deploys/edit', deploy.id]" title="Editar">✏️</button>
+          <button (click)="deleteDeploy(deploy.id!)" class="danger" title="Excluir">🗑</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && deploys.length === 0" class="info-message">Nenhum deploy encontrado.</div>
+</div>

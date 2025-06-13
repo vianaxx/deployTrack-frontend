@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="applyFilter()" class="filter-form">
+  <label>Autor:</label>
+  <input type="text" formControlName="author" placeholder="Autor do deploy">
+
+  <label>Status:</label>
+  <select formControlName="status">
+    <option value="">Todos</option>
+    <option value="SUCCESS">SUCCESS</option>
+    <option value="ERROR">ERROR</option>
+    <option value="ROLLBACK">ROLLBACK</option>
+  </select>
+
+  <label>Data Inicial:</label>
+  <input type="date" formControlName="startDate">
+
+  <label>Data Final:</label>
+  <input type="date" formControlName="endDate">
+
+  <button type="submit">Aplicar</button>
+  <button type="button" (click)="resetFilter()">Limpar</button>
+</form>

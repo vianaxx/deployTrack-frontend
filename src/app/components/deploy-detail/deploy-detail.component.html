@@ -1,0 +1,47 @@
+<h2>{{ isEditMode ? 'Editar' : 'Novo' }} Deploy</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>Aplicação:</label>
+  <input type="text" formControlName="application">
+  <div *ngIf="form.get('application')?.invalid && form.get('application')?.touched" style="color: red;">
+    Campo obrigatório
+  </div>
+
+
+  <label>Versão:</label>
+  <input type="text" formControlName="version">
+  <div *ngIf="form.get('version')?.invalid && form.get('version')?.touched" style="color: red;">
+    Campo obrigatório
+  </div>
+
+  <label>Ambiente:</label>
+  <input type="text" formControlName="environment">
+  <div *ngIf="form.get('environment')?.invalid && form.get('environment')?.touched" style="color: red;">
+    Campo obrigatório
+  </div>
+
+  <label>Autor:</label>
+  <input type="text" formControlName="author">
+  <div *ngIf="form.get('author')?.invalid && form.get('author')?.touched" style="color: red;">
+    Campo obrigatório
+  </div>
+
+  <label>Status:</label>
+  <select formControlName="status">
+    <option value="SUCCESS">SUCCESS</option>
+    <option value="ERROR">ERROR</option>
+    <option value="ROLLBACK">ROLLBACK</option>
+  </select>
+  <div *ngIf="form.get('status')?.invalid && form.get('status')?.touched" style="color: red;">
+    Campo obrigatório
+  </div>
+
+  <label>Data/Hora:</label>
+  <input type="datetime-local" formControlName="timestamp">
+  <div *ngIf="form.get('timestamp')?.invalid && form.get('timestamp')?.touched" style="color: red;">
+    Campo obrigatório
+  </div>
+
+  <button type="submit">Salvar</button>
+  <button routerLink="/deploys" type="button">Cancelar</button>
+</form>

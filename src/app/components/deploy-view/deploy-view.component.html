@@ -1,0 +1,17 @@
+<div *ngIf="loading" class="info-message">Carregando...</div>
+<div *ngIf="error" class="error-message">{{ error }}</div>
+
+<div *ngIf="deploy && !loading" class="deploy-view">
+  <h2>Detalhes do Deploy</h2>
+  <ul>
+    <li><strong>ID:</strong> {{ deploy.id }}</li>
+    <li><strong>Aplicação:</strong> {{ deploy.application }}</li>
+    <li><strong>Versão:</strong> {{ deploy.version }}</li>
+    <li><strong>Ambiente:</strong> {{ deploy.environment }}</li>
+    <li><strong>Autor:</strong> {{ deploy.author }}</li>
+    <li><strong>Status:</strong> {{ deploy.status }}</li>
+    <li><strong>Data/Hora:</strong> {{ deploy.timestamp | date:'short' }}</li>
+  </ul>
+
+  <button (click)="voltar()">← Voltar</button>
+</div>

@@ -1,0 +1,51 @@
+.filter-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: end;
+
+  label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.2rem;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #fff;
+  }
+
+  button {
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &[type="submit"] {
+      background-color: #007acc;
+      color: white;
+
+      &:hover {
+        background-color: #005fa3;
+      }
+    }
+
+    &[type="button"] {
+      background-color: #e0e0e0;
+      color: #333;
+
+      &:hover {
+        background-color: #cfcfcf;
+      }
+    }
+  }
+}
